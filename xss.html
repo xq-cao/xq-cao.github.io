@@ -13,13 +13,12 @@
     var url = window.location.href;
     var name;
     var paramStr = url.slice(url.indexOf('?') + 1).split('&');
-    var params = {}, pair, param, value, i;
+    var params = {}, index, key, value, param, value, i;
     for (i = 0; i < paramStr.length; i++) {
-      pair = paramStr[i].split('=');
-      param = pair[0];
-      value = pair[1];
-      params[param] = params[param] || [];
-      params[param].push(decodeURI(value));
+      key = paramStr[i].slice(paramStr[i].indexOf('='));
+      value = paramStr[i].slice(paramStr[i].indexOf('=') + 1);
+      params[key] = params[key] || [];
+      params[key].push(decodeURI(value));
     }
     
     var titleDom = document.querySelector(".title");
