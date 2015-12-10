@@ -5,6 +5,25 @@
   <title>JS Bin</title>
 </head>
 <body>
-
+  <div class="main" style="font-size:32px">
+    <div>Title:</div>
+    <div class="title">haha</div>
+  </div>
+  <script>
+    var url = window.location.href;
+    var name;
+    var paramStr = url.slice(url.indexOf('?') + 1).split('&');
+    var params = {}, pair, param, value, i;
+    for (i = 0; i < paramStr.length; i++) {
+      pair = paramStr[i].split('=');
+      param = pair[0];
+      value = pair[1];
+      params[param] = params[param] || [];
+      params[param].push(decodeURI(value));
+    }
+    
+    var titleDom = document.querySelector(".title");
+    titleDom.innerHtml = "hello: " + params.title;
+  </script>
 </body>
 </html>
