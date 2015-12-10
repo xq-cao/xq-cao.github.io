@@ -15,7 +15,7 @@
     var paramStr = url.slice(url.indexOf('?') + 1).split('&');
     var params = {}, index, key, value, param, value, i;
     for (i = 0; i < paramStr.length; i++) {
-      key = paramStr[i].slice(paramStr[i].indexOf('='));
+      key = paramStr[i].slice(0, paramStr[i].indexOf('='));
       value = paramStr[i].slice(paramStr[i].indexOf('=') + 1);
       params[key] = params[key] || [];
       params[key].push(decodeURI(value));
